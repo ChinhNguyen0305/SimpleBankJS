@@ -310,3 +310,59 @@ h2 {
 .timer {
   font-weight: 600;
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.close--popup {
+  height: 170px;
+  width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background: #d38237;
+  opacity: 1;
+  border-radius: 5px;
+  /* width: 45%; */
+  position: absolute;
+  /* transition: all 1s; */
+  visibility: hidden;
+  top: 80px;
+  right: 0;
+  font-size: large;
+}
+
+.button {
+  height: 40px;
+  width: 75px;
+  margin-left: 50px;
+  border-radius: 15px;
+}
+
+.close__button--yes {
+  background-color: #16dda1;
+}
+
+.close__button--no {
+  background-color: rgb(221, 39, 39);
+}
+
+.close--popup--invalidAccount {
+  visibility: hidden;
+}
+
+.button-invalid-confirm {
+  background-color: grey;
+}

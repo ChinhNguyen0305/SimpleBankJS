@@ -61,6 +61,13 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const closeAccountPopUp = document.querySelector('.close--popup');
+const closeAccountInvalid = document.querySelector(
+  '.close--popup--invalidAccount'
+);
+const btnAccountCloseYes = document.querySelector('.close__button--yes');
+const btnAccountCloseNo = document.querySelector('.close__button--no');
+
 console.log(accounts);
 //Behavior
 //CREATE USERNAME
@@ -189,16 +196,31 @@ btnClose.addEventListener('click', function (e) {
     inputCloseUsername.value === currentAccount.user &&
     +inputClosePin.value === currentAccount.pin
   ) {
-    alert('This operation can not be reversed, do you want to process?');
-    accounts.splice(
-      accounts.findIndex(acc => acc.user === inputCloseUsername.value),
-      1
-    );
-    currentAccount = '';
+    closeAccountPopUp.style.visibility = 'visible';
+  } else {
+    closeAccountInvalid.style.visibility = 'visibility';
   }
-  // console.log(accounts);
+  console.log(accounts);
 });
 
+btnAccountCloseYes.addEventListener('click', function (e) {
+  e.preventDefault();
+  closeAccountPopUp.style.visibility = 'visible';
+  accounts.splice(
+    accounts.findIndex(acc => acc.user === inputCloseUsername.value),
+    1
+  );
+  inputCloseUsername.value = inputClosePin.value = '';
+  currentAccount = '';
+  closeAccountPopUp.style.visibility = 'hidden';
+  console.log(accounts);
+});
+
+btnAccountCloseNo.addEventListener('click', function (e) {
+  e.preventDefault();
+  closeAccountPopUp.style.visibility = 'hidden';
+  console.log(accounts);
+});
 //SORT BUTTON
 let isSorted = false;
 btnSort.addEventListener('click', function (e) {
